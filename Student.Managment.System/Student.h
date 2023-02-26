@@ -1,17 +1,15 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#include <array>
-
 #include "Person.h"
 #include "Course.h"
 
 class Student : public Person // derived class
 {
-protected:
-	Student(std::string_view firstName = "", std::string_view lastName = "",
-		char middleInital = ' ', int age = 0, char gender = ' ')
-		: Person{ firstName, lastName, middleInital, age, gender }
+public:
+	Student(std::string_view firstName, std::string_view lastName,
+		char middleInital, char sex, int age) noexcept
+		: Person{ firstName, lastName, middleInital, sex, age, }
 	{
 	}
 
@@ -25,13 +23,11 @@ public:
 	};
 
 	void print() const override;
-
+	void setClassification(Classification year);
 	Classification& getClassification() { return m_year; }
-	std::array<Course, 8>& getCourses() { return m_courses; }
 
 private:
 	Classification m_year{};
-	std::array<Course, 8> m_courses{};
 };
 
 #endif

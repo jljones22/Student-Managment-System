@@ -8,55 +8,24 @@ the teachers will use it to set tasks,
 grade students, and add or change details.
 */
 
-#include <string>
-#include <iostream>
-#include <exception>
-
 #include "Person.h"
 #include "Student.h"
+#include "Teacher.h"
 
-
-class Teacher : public Person
-{
-public:
-	Teacher(std::string_view firstName, std::string_view lastName,
-		char middleInital, int age, char gender, double salary)
-		: Person{ firstName, lastName, middleInital, age, gender }
-	{
-	}
-
-	void setTasks()
-	{
-
-	}
-
-	void modifyDetails()
-	{
-
-	}
-
-	void print() const override
-	{
-		std::cout << *this;
-	}
-
-private:
-	//std::array<Student, 21> m_students{};
-	Course m_course{};
-	// double m_salary{};
-};
-
-int main()
+int main(int argc, char* argv[])
 {
 	try
 	{
-		//Student person{ "Johnie", "Jones", 'L', 21, 'M', {} };
+		Teacher frank{ "Frank", "Baile", 'B', 32, 'M' };
 
-		//Teacher teacher{};
-		//Person* derevied = &teacher;
+		Student john{ "John", "Bob", 'A', 22, 'M' };
 
-		//std::cout << person;
-		//person.print();
+		Person* derived[] = { &frank, &john };
+
+		for (const auto& i : derived)
+		{
+			std::cout << *i << '\n';
+		}
 	}
 	catch (const std::exception& exception)
 	{

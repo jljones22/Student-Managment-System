@@ -2,9 +2,11 @@
 #define COURSE_H
 
 #include <string>
+#include <array>
 
-struct Course
+class Course
 {
+public:
 	enum Subjects
 	{
 		math,
@@ -25,6 +27,8 @@ struct Course
 
 	Subjects subject{};
 	std::string courseName{};
+	std::array<std::string, 10> tasks{};
+	// Teacher teacher{};
 };
 
 #endif
